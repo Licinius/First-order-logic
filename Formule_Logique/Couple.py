@@ -2,7 +2,10 @@
 Created on 13 févr. 2017
 
 '''
-from Formule_Logique import *
+from Formule_Logique.Quantificateur import Quantificateur
+from Formule_Logique.Atome import Atome
+
+
 class MyClass(object):
 
 
@@ -13,9 +16,10 @@ class MyClass(object):
         
         def getQuantificateur(self):
             return self.quantificateur
+        #End getQuantificateur
         
         def getAtome(self):
             return self.atome
-       
+        #End getAtome
        
         

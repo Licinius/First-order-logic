@@ -2,7 +2,8 @@
 Created on 13 févr. 2017
 
 '''
-from Formule_Logique import *
+from Formule_Logique.Atome import Atome
+
 class MyClass(object):
 
     def __init__(self,n : int):
