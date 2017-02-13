@@ -5,7 +5,7 @@ Created on 13 févr. 2017
 '''
 from Formule_Logique import Couple, Predicat
 
-class MyClass(object):
+class Formule(object):
 
 
     def __init__(self, gauche : Couple,droite : Couple, pred : Predicat):
@@ -22,5 +22,10 @@ class MyClass(object):
         return self.droite
     #End getDroite
     
+    def getPredicat (self):
+        return self.predicat
+    #End getPredicat
     
-        
+    def __str__(self):
+        return "Formule :" + str(self.getGauche())+" "+ str(self.getDroite()) + " " + str(self.getPredicat())
+    #End __str__
