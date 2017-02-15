@@ -37,3 +37,4 @@ class Predicat(object):
             else:
                 retour += "," + str(constante.name)
         return retour+")"
+    #End __str__

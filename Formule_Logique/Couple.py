@@ -3,26 +3,26 @@ Created on 13 févr. 2017
 
 '''
 from Formule_Logique.Quantificateur import Quantificateur
-from Formule_Logique.Constante import Constante
+import string
 
 
 class Couple(object):
 
 
-        def __init__(self, quant : Quantificateur, c : Constante):
+        def __init__(self, quant : Quantificateur, c : string):
             self.quantificateur = quant
-            self.constante = c
+            self.variable = c
         #End Constructor
         
         def getQuantificateur(self):
             return self.quantificateur
         #End getQuantificateur
         
-        def getConstante(self):
-            return self.constante
-        #End getAtome
+        def getVariable(self):
+            return self.variable
+        #End getVariable
        
         def __str__(self):
-            return str(self.getQuantificateur().name)+" " + str(self.getConstante().name)
+            return str(self.getQuantificateur().name)+" " + str(self.getVariable()().name)
         #End __str__
         
