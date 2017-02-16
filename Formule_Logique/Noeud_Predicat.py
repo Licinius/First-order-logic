@@ -16,6 +16,7 @@ class Noeud_Predicat(Noeud):
         n.setPere(self)
     #End greffer
     
+ 
     def printFormule(self,p):
         if(p>0):
             res="\n┖"

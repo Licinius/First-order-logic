@@ -18,10 +18,15 @@ if __name__ == '__main__':
     c2 = Couple(Quantificateur.existe,"y")
     N2=Noeud_Couple(None,c2)
     
-    Carre = Predicat("Carre",1)
-    Carre.add("x")
+    # Function definition is here
+    carre = lambda arg: arg[0] =="carre";
     
-    Rond = Predicat("Rond",1)
+    Carre = Predicat("Carre",1,carre)
+    Carre.add("carre")
+    
+    print(Carre.execute())
+    
+    Rond = Predicat("Rond",1,None)
     Rond.add("y")
     
     NP1 = Noeud_Predicat(None,Carre)

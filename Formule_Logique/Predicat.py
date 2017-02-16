@@ -6,22 +6,25 @@ import string
 
 class Predicat(object):
 
-    def __init__(self,nom : string,arite : int):
+    def __init__(self,nom : string,arite : int,fun):
         self.variables = []
         self.nom = nom
         self.arite = arite
+        self.function = fun
     #End Constructeur
     
     '''
-        Ajoute un atome à la fin de la liste si elle n'est pas pleine
+        Ajoute une variable ou atome  à la fin de la liste si elle n'est pas pleine
     '''
     def add(self,variable):
         if(len(self.variables)<self.arite):
             self.variables.append(variable)
     #End add    
     
+    def execute(self):
+        return self.function(self.variables)
     '''
-        Retourne l'atome à la n-ième position de la liste.
+        Retourne la variable à la n-ième position de la liste.
     '''
     def get(self,i : int):
         if(i<len(self.variables)):
