@@ -23,6 +23,6 @@ class Couple(object):
         #End getVariable
        
         def __str__(self):
-            return str(self.getQuantificateur().name)+" " + str(self.getVariable()().name)
+            return str(self.getQuantificateur().value)+ self.getVariable()
         #End __str__
         

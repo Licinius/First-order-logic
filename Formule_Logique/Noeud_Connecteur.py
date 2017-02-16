@@ -26,3 +26,21 @@ class Noeud_Connecteur(Noeud):
             
         n.setPere(self)
     #End greffer    
+        
+    def printFormule(self,p):
+        if(p>0):
+            res="\n┖"
+        else :
+            res = ""
+        for i in range(0,p):
+            res+='--'
+        res+=self.Connecteur.value
+        if(self.gauche is None and self.droite is None):
+            return res 
+        elif(self.gauche is not None and self.droite is None):
+            return res+self.gauche.printFormule(p+1)
+        elif (self.gauche is None and self.droite is not None):
+            return res + self.droite.printFormule(p+1)
+        else:
+            return res + self.gauche.printFormule(p+1) + self.droite.printFormule(p+1)
+        
