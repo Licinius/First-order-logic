@@ -21,8 +21,8 @@ class Predicat(object):
             self.variables.append(variable)
     #End add    
     
-    def execute(self):
-        return self.function(self.variables)
+    def execute(self,tab_parametre):
+        return self.function(tab_parametre)
     '''
         Retourne la variable à la n-ième position de la liste.
     '''

@@ -22,9 +22,9 @@ if __name__ == '__main__':
     carre = lambda arg: arg[0] =="carre";
     
     Carre = Predicat("Carre",1,carre)
-    Carre.add("carre")
-    
-    print(Carre.execute())
+    Carre.add("x")
+
+    print(Carre.execute(["carre"]))
     
     Rond = Predicat("Rond",1,None)
     Rond.add("y")
