@@ -1,12 +1,10 @@
-'''
-Created on 13 févr. 2017
+# -*-coding:Latin-1 -*
 
-'''
 import string
 
 class Predicat(object):
 
-    def __init__(self,nom : string,arite : int,fun):
+    def __init__(self,nom,arite,fun):
         self.variables = []
         self.nom = nom
         self.arite = arite
@@ -26,7 +24,7 @@ class Predicat(object):
     '''
         Retourne la variable à la n-ième position de la liste.
     '''
-    def get(self,i : int):
+    def get(self,i):
         if(i<len(self.variables)):
             return self.variables[i]
     #End get

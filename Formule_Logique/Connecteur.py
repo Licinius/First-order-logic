@@ -1,7 +1,5 @@
-'''
-Created on 13 févr. 2017
+# -*-coding:Latin-1 -*
 
-'''
 
 from enum import Enum
 

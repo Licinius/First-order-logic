@@ -1,8 +1,5 @@
-'''
-Created on 15 févr. 2017
+# -*-coding:Latin-1 -*
 
-@author: Marvin
-'''
 
 class Noeud(object):
     

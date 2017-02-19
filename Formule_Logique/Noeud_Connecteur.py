@@ -1,10 +1,12 @@
+# -*-coding:Latin-1 -*
+
 from Formule_Logique.Connecteur import Connecteur
 from Formule_Logique.Noeud import Noeud
 
 
 class Noeud_Connecteur(Noeud):
 
-    def __init__(self, p : Noeud,c : Connecteur):
+    def __init__(self, p,c):
         Noeud.__init__(self, p)
         self.Connecteur = c
         self.gauche = None
@@ -16,7 +18,7 @@ class Noeud_Connecteur(Noeud):
        Si le fils droit est vide greffe à droite
        Sinon greffe à gauche
     '''
-    def greffer(self,n : Noeud):
+    def greffer(self,n):
         if(self.gauche is None):
             self.gauche = n
         elif(self.droite is None):

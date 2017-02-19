@@ -1,8 +1,4 @@
-'''
-Created on 13 févr. 2017
 
-@author: Marvin
-'''
 
 from Formule_Logique.Couple import Couple
 from Formule_Logique.Quantificateur import Quantificateur
@@ -14,12 +10,12 @@ from Formule_Logique.Noeud_Predicat import Noeud_Predicat
 
 if __name__ == '__main__':
     c = Couple(Quantificateur.pour_tout,"x")
-    N = Noeud_Couple(None,c);
+    N = Noeud_Couple(None,c)
     c2 = Couple(Quantificateur.existe,"y")
     N2=Noeud_Couple(None,c2)
     
     # Function definition is here
-    carre = lambda arg: arg[0] =="carre";
+    carre = lambda args: args[0] =="carre";
     
     Carre = Predicat("Carre",1,carre)
     Carre.add("x")

@@ -1,3 +1,4 @@
+# -*-coding:Latin-1 -*
 
 from Formule_Logique.Noeud import Noeud
 from Formule_Logique.Couple import Couple
@@ -6,7 +7,7 @@ from Formule_Logique.Couple import Couple
 
 class Noeud_Couple(Noeud):
 
-    def __init__(self, p : Noeud,c : Couple):
+    def __init__(self, p,c):
         Noeud.__init__(self, p)
         self.couple = c
         self.gauche = None

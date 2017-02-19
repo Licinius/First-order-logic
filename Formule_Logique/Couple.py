@@ -1,15 +1,9 @@
-'''
-Created on 13 févr. 2017
-
-'''
-from Formule_Logique.Quantificateur import Quantificateur
-import string
-
+# -*-coding:Latin-1 -*
 
 class Couple(object):
 
 
-        def __init__(self, quant : Quantificateur, c : string):
+        def __init__(self, quant, c):
             self.quantificateur = quant
             self.variable = c
         #End Constructor
