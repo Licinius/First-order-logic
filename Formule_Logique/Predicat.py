@@ -1,6 +1,4 @@
-# -*-coding:Latin-1 -*
-
-import string
+#-*- coding: utf-8 -*-
 
 class Predicat(object):
 

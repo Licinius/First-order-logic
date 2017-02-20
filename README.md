@@ -2,6 +2,6 @@ Formule_Logique
 ========================================================
 
 Ce module permet de créer des arbres représentant des formules logique avec Predicat.
-Vous pouvez l'installer avec pip:
+Vous pouvez l'installer avec python:
 
-    pip install Formule_Logique
+    python setup.py install

@@ -1,7 +1,7 @@
-# -*-coding:Latin-1 -*
+#-*- coding: utf-8 -*-
 
 from Formule_Logique.Noeud import Noeud
-from Formule_Logique.Predicat import Predicat
+
 
 
 class Noeud_Predicat(Noeud):
@@ -18,6 +18,10 @@ class Noeud_Predicat(Noeud):
         n.setPere(self)
     #End greffer
     
+    '''get le contenu du node'''
+    def getEtiquette(self):
+        return self.predicat
+    #End getEtiquette
  
     def printFormule(self,p):
         if(p>0):

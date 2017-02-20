@@ -1,8 +1,6 @@
-# -*-coding:Latin-1 -*
+#-*- coding: utf-8 -*-
 
 from Formule_Logique.Noeud import Noeud
-from Formule_Logique.Couple import Couple
-
 
 
 class Noeud_Couple(Noeud):
@@ -18,6 +16,10 @@ class Noeud_Couple(Noeud):
         self.gauche = n
         n.setPere(self)
     #End greffer
+    '''get le contenu du node'''
+    def getEtiquette(self):
+        return self.couple
+    #End getEtiquette
     
     def printFormule(self,p):
         if(p>0):

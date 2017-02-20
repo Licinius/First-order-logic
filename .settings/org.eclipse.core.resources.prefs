@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
-encoding//Formule_Logique/Connecteur.py=latin1
-encoding//Formule_Logique/Couple.py=latin1
-encoding//Formule_Logique/Noeud.py=latin1
-encoding//Formule_Logique/Noeud_Connecteur.py=latin1
-encoding//Formule_Logique/Noeud_Couple.py=latin1
-encoding//Formule_Logique/Noeud_Predicat.py=latin1
-encoding//Formule_Logique/Predicat.py=latin1
-encoding//Formule_Logique/Quantificateur.py=latin1
+encoding//Formule_Logique/Connecteur.py=utf-8
+encoding//Formule_Logique/Couple.py=utf-8
+encoding//Formule_Logique/Noeud.py=utf-8
+encoding//Formule_Logique/Noeud_Connecteur.py=utf-8
+encoding//Formule_Logique/Noeud_Couple.py=utf-8
+encoding//Formule_Logique/Noeud_Predicat.py=utf-8
+encoding//Formule_Logique/Predicat.py=utf-8
+encoding//Formule_Logique/Quantificateur.py=utf-8

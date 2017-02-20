@@ -1,6 +1,4 @@
-# -*-coding:Latin-1 -*
-
-from Formule_Logique.Connecteur import Connecteur
+#-*- coding: utf-8 -*-
 from Formule_Logique.Noeud import Noeud
 
 
@@ -13,6 +11,11 @@ class Noeud_Connecteur(Noeud):
         self.droite =  None
         
     #End __init_ Noeud_Connecteur
+    
+    '''get le contenu du node'''
+    def getEtiquette(self):
+        return self.Connecteur
+    #End getEtiquette
     
     '''Si le fils gauche est vide greffe à gauche 
        Si le fils droit est vide greffe à droite
