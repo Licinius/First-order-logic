@@ -20,6 +20,11 @@ class Noeud_Connecteur(Noeud):
     def getFilsGauche(self):
         return self.gauche;
     #End getFilsGauche
+    
+    def getFilsDroit(self):
+        return self.droite;
+    #End getFilsDroit
+    
     '''Si le fils gauche est vide greffe à gauche 
        Si le fils droit est vide greffe à droite
        Sinon greffe à gauche
