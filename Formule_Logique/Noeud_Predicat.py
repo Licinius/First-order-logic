@@ -18,6 +18,9 @@ class Noeud_Predicat(Noeud):
         n.setPere(self)
     #End greffer
     
+    def getFilsGauche(self):
+        return self.gauche;
+    #End getFilsGauche
     '''get le contenu du node'''
     def getEtiquette(self):
         return self.predicat

@@ -16,10 +16,15 @@ class Noeud_Couple(Noeud):
         self.gauche = n
         n.setPere(self)
     #End greffer
+    
     '''get le contenu du node'''
     def getEtiquette(self):
         return self.couple
     #End getEtiquette
+    
+    def getFilsGauche(self):
+        return self.gauche;
+    #End getFilsGauche
     
     def printFormule(self,p):
         if(p>0):
