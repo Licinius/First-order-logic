@@ -27,12 +27,11 @@ class Noeud_Couple(Noeud):
     #End getFilsGauche
     
     def printFormule(self,p):
-        if(p>0):
-            res="\n┖"
-        else :
-            res = ""
+        res="\n"
         for i in range(0,p):
-            res+='--'
+            res+="  "
+        res +="┖"
+        res+='--'
         res+=self.couple.__str__()
         if(self.gauche is None):
             return res 

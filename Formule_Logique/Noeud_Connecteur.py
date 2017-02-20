@@ -36,12 +36,11 @@ class Noeud_Connecteur(Noeud):
     #End greffer    
         
     def printFormule(self,p):
-        if(p>0):
-            res="\n┖"
-        else :
-            res = ""
+        res="\n"
         for i in range(0,p):
-            res+='--'
+            res+="  "
+        res +="┖"
+        res+='--'
         res+=self.Connecteur.value
         if(self.gauche is None and self.droite is None):
             return res 

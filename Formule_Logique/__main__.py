@@ -29,12 +29,12 @@ if __name__ == '__main__':
     NP2 = Noeud_Predicat(None,Rond)
     
     NC = Noeud_Connecteur(None,Connecteur.ET)
-    NC.greffer(NP1)
-    NC.greffer(NP2)
+    NC.greffer(N)
+    NC.greffer(N2)
     
-    N2.greffer(NC)
-    N.greffer(N2)
-    print(N)
+    N2.greffer(NP2)
+    N.greffer(NP1)
+    print(NC)
     
     
     
