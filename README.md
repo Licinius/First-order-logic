@@ -1,5 +1,5 @@
 # Formule_Logique
-# ========================================================
+# ==============================
 Formule logique permet de créer des arbres représentant des formules logique du premier ordre, il contient un parser et des fonctions associées. Il a été créé pour être utilisé avec Tulip afin de générer des graphes. 
 
 ### Installation
