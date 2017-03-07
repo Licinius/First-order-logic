@@ -1,15 +1,25 @@
-Formule_Logique
-========================================================
+# Formule_Logique
+# ========================================================
+Formule logique permet de créer des arbres représentant des formules logique du premier ordre, il contient un parser et des fonctions associées. Il a été créé pour être utilisé avec Tulip afin de générer des graphes. 
 
-Ce module permet de créer des arbres représentant des formules logique avec Predicat.
-Vous pouvez l'installer avec python:
+### Installation
+Pour installer la bibliotèque il suffit de faire : 
 
-    python setup.py install
+```sh
+$ python setup.py install
+```
 
-Module nécessaire : 
 
-Il faut installer le module ply de python pour yacc et lex
-	Sur Linux : 
-		>sudo apt-get install python-ply
-	Sur Windows : 
-		>pip install ply
+### Plugins
+
+| Plugin | Lien |
+| ------ | -----|
+| Ply | https://pypi.python.org/pypi/ply |
+| enum34 | https://pypi.python.org/pypi/enum34 |
+
+L'installation des modules peut se faire à l'aide de pip : 
+
+```sh
+$ pip install ply
+$ pip install enum34
+```
