@@ -1,6 +1,6 @@
 import ply.yacc as yacc
 
-from lex_formuleLogique import tokens
+from Formule_Logique.lex_formuleLogique import tokens
 
 # ordre et privilege et associabilite a gauche ou droite
 precedence = (
@@ -74,7 +74,7 @@ def p_empty(e):
 #end func
 
 def p_error(p):
-	print "Erreur synthaxe ! Le caractere '",p.value,"' n'etait pas attendu ici" 
+	print( "Erreur synthaxe ! Le caractere '" + p.value + "' n'etait pas attendu ici")
 	exit(-1)
 #end func
 

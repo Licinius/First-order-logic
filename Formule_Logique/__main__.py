@@ -6,7 +6,7 @@ from Formule_Logique.Connecteur import Connecteur
 from Formule_Logique.Predicat import Predicat
 from Formule_Logique.Noeud_Binaire import Noeud_Binaire
 from Formule_Logique.Noeud_Unaire import Noeud_Unaire
-
+from  Formule_Logique.yacc_formuleLogique import parser
 if __name__ == '__main__':
     c = Couple(Quantificateur.pour_tout,"x")
     N = Noeud_Unaire(etiquette=c)
@@ -35,9 +35,9 @@ if __name__ == '__main__':
     N.greffer(NP1)
     print(NC)
     
-    ''''f = raw_input('Formule : ')
-    # f = "Vx Ey (carre(x) && rond(y)) >> relier(x,y)"
+    #f = raw_input('Formule : ')
+    f = "Vx Ey (carre(x) && rond(y)) >> relier(x,y)"
     parser.parse(f)
-    exit(0)'''
+    exit(0)
     
     
