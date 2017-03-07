@@ -3,7 +3,7 @@
 
 class Noeud(object):
     
-    def __init__(self, p):
+    def __init__(self, p=None):
         self.pere = p
     #End __init_ Noeud
     

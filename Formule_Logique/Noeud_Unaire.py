@@ -4,12 +4,12 @@ from Formule_Logique.Noeud import Noeud
 
 
 
-class Noeud_Predicat(Noeud):
+class Noeud_Unaire(Noeud):
 
-    def __init__(self, p,c):
+    def __init__(self,etiquette,p=None,g=None):
         Noeud.__init__(self, p)
-        self.predicat = c
-        self.gauche = None
+        self.etiquette = etiquette
+        self.gauche = g
         
     #End __init_ Noeud_Connecteur
 
@@ -23,7 +23,7 @@ class Noeud_Predicat(Noeud):
     #End getFilsGauche
     '''get le contenu du node'''
     def getEtiquette(self):
-        return self.predicat
+        return self.etiquette
     #End getEtiquette
  
     def printFormule(self,p):
@@ -32,7 +32,8 @@ class Noeud_Predicat(Noeud):
             res+="  "
         res +="┖"
         res+='--'
-        res+=self.predicat.__str__()
+        res+=self.etiquette.__str__()
+        #res+=self.couple.__str__()
         if(self.gauche is None):
             return res 
         else:

@@ -2,7 +2,7 @@
 
 class Predicat(object):
 
-    def __init__(self,nom,arite,fun):
+    def __init__(self,nom,arite,fun=None):
         self.variables = []
         self.nom = nom
         self.arite = arite

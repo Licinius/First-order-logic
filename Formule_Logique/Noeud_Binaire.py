@@ -2,13 +2,13 @@
 from Formule_Logique.Noeud import Noeud
 
 
-class Noeud_Connecteur(Noeud):
+class Noeud_Binaire(Noeud):
 
-    def __init__(self, p,c):
+    def __init__(self,etiquette,p=None,g=None,d=None):
         Noeud.__init__(self, p)
-        self.Connecteur = c
-        self.gauche = None
-        self.droite =  None
+        self.Connecteur = etiquette
+        self.gauche = g
+        self.droite =  d
         
     #End __init_ Noeud_Connecteur
     
