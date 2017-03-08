@@ -36,7 +36,7 @@ if __name__ == '__main__':
     print(NC)
     
     #f = raw_input('Formule : ')
-    f = "Vx Ey (carre(x) && rond(y)) >> relier(x,y)"
+    f = "c(x)"
     parser.parse(f)
     exit(0)
     
