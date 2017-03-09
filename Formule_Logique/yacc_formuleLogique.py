@@ -10,23 +10,31 @@ precedence = (
 	('right', 'NOT')
 )
 
-def p_formule(f):
-	'''formule  : LPAR formule RPAR
-				| NOT formule
-				| formule oper formule
-				| var formule
-				| pred
-	'''
-	if f[0]=='LPAR':
-		print('Debut de formule')
-	elif f[0] == 'NOT':
-		print('Negation de formule')
-	elif f[2]== 'oper':
-		print('operateur')
-		
-	
-	print("J'ai reconnu : " + f[0])
+def p_formulePAR(f):
+	'''formule : LPAR formule RPAR'''
+	f[0] = "(" + f[2] + ")"
+	print "Formule reconnu : " + f[0]
 #end func
+
+def p_formuleNOT(f):
+	'''formule : NOT formule'''
+	f[0] = "!" + f[2]
+	print "Formule reconnu : " + f[0]
+#end func
+
+def p_formuleOPER(f):
+	'''formule : formule oper formule'''
+	f[0] = f[1] + " " + f[2] + " " + f[3]
+#end func
+
+def p_formuleVAR(f):
+	'''formule : var formule'''
+	f[0] = f[1] + " " + f[2]
+#end func
+
+def p_formulePred(f):
+	'''formule : pred'''
+	f[0] = 
 
 #------------------------------------------------ PREDICAT --------------------------------------------------------
 
