@@ -1,7 +1,13 @@
 import ply.yacc as yacc
 
 from lex_formuleLogique import tokens
-
+from Formule_Logique.Couple import Couple
+from Formule_Logique.Quantificateur import Quantificateur
+from Formule_Logique.Connecteur import Connecteur
+from Formule_Logique.Predicat import Predicat
+from Formule_Logique.Noeud_Binaire import Noeud_Binaire
+from Formule_Logique.Noeud_Unaire import Noeud_Unaire
+from Formule_Logique.Connecteur_Unaire import Connecteur_Unaire
 # ordre et privilege et associabilite a gauche ou droite
 precedence = (
 	('right', 'IMPL'),
@@ -9,85 +15,83 @@ precedence = (
 	('left', 'AND'),
 	('right', 'NOT')
 )
+def ligne(l):
+	'''ligne : formule \n'''
+	print(l[1])
+#end func
 
 def p_formulePAR(f):
 	'''formule : LPAR formule RPAR'''
-	f[0] = "(" + f[2] + ")"
-	print "Formule reconnu : " + f[0]
+	f[0]=f[0];	
 #end func
 
 def p_formuleNOT(f):
 	'''formule : NOT formule'''
-	f[0] = "!" + f[2]
-	print "Formule reconnu : " + f[0]
+	f[0]=Noeud_Unaire(Connecteur_Unaire.NEG,f[1])
+	
 #end func
 
 def p_formuleOPER(f):
 	'''formule : formule oper formule'''
-	f[0] = f[1] + " " + f[2] + " " + f[3]
+	f[0]= Noeud_Binaire(f[2],g=f[1],d=f[3])
 #end func
 
 def p_formuleVAR(f):
 	'''formule : var formule'''
-	f[0] = f[1] + " " + f[2]
+	f[0]=Noeud_Unaire(f[1],g=f[2])
 #end func
 
 def p_formulePred(f):
 	'''formule : pred'''
-	f[0] = 
+	f[0]=Noeud_Unaire(f[2])
+#end func 
 
 #------------------------------------------------ PREDICAT --------------------------------------------------------
 
 
 def p_predNarg(p):
-	'''pred : ID LPAR arg RPAR'''
-	#	-- p[0] = function p[1]
-	p[0] = p[1] + "(" + p[3] + p[4] + ")"
+	'''pred : ID LPAR ID listarg RPAR'''
+	arg = []
+	arg.append(p[3])
+	arg.extend(p[4])
+	p[0]=Predicat(p[1],arg)
 #end func
 
-
-def p_arg(p):
-	'''arg 	:  ID SEP arg
-			| arg
-			| empty
-	'''
-	if len(p) == 4:
-		p[0] = ", " + p[2] + p[3]
-	else:
-		p[0] = ""
+def p_listarg(arg):
+	''' listarg : SEP ID listarg
+				| empty'''
+	tmp =[]
+	tmp.append(arg[2])
+	tmp.extend(arg[3])
+	arg[0] =tmp
 #end func
-
+	
 
 
 #------------------------------------------------- OPERATEUR ------------------------------------------------------
 
 def p_oper_OR(op):
 	'''oper : OR'''
-	#	--	op[0] = node OU
-	op[0] = op[1]
+	op[0] = Connecteur.OU
 #end func
 
 def p_oper_AND(op):
 	'''oper : AND'''
-	#	--	op[0] = node ET
-	op[0] = op[1]
+	op[0]=Connecteur.ET
 #end func
 
 def p_oper_IMPL(op):
 	'''oper : IMPL'''
-	#	--	op[0] = node IMPL
-	op[0] = op[1]
+	op[0]=Connecteur.IMP
+
 #end func
 
 #--------------------------------------------------- RESTE --------------------------------------------------------
 
 def p_var(v):
-	'''var 	: QUANT ID var
-			| empty'''
-	if len(v) == 4:
-		v[0] = v[1] + v[2] + " " + v[3]
-	else:
-		v[0] = ""
+	'''var 	: QUANT ID '''
+	if(v[1]=='V'):
+		v[0]= Couple(Quantificateur.pour_tout,v[2])
 #end func
 
 def p_empty(e):

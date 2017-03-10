@@ -2,11 +2,23 @@
 
 class Predicat(object):
 
-    def __init__(self,nom,arite,fun=None):
+    def __init__(self,nom,arite=None,fun=None,listPred=None):
         self.variables = []
         self.nom = nom
-        self.arite = arite
+
         self.function = fun
+        
+        arr=0
+        if(listPred is not None):
+            for i in listPred:
+                self.add(i)
+                arr+=1
+            
+        if(arite is not None):
+            self.arite = arite
+        else: 
+            self.arite = arr
+           
     #End Constructeur
     
     '''

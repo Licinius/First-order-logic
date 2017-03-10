@@ -4,45 +4,40 @@ Grammar
 
 Rule 0     S' -> formule
 Rule 1     formule -> LPAR formule RPAR
-Rule 2     formule -> var listPred1
-Rule 3     listPred1 -> listPred1 listPred2
-Rule 4     listPred1 -> pred
-Rule 5     listPred2 -> oper listPred1
-Rule 6     listPred2 -> empty
-Rule 7     pred -> ID LPAR ID arg RPAR
-Rule 8     arg -> SEP ID arg
-Rule 9     arg -> empty
-Rule 10    pred -> NOT pred
-Rule 11    oper -> OR
-Rule 12    oper -> AND
-Rule 13    oper -> IMPL
-Rule 14    var -> QUANT ID var
-Rule 15    var -> empty
-Rule 16    empty -> <empty>
+Rule 2     formule -> NOT formule
+Rule 3     formule -> formule oper formule
+Rule 4     formule -> var formule
+Rule 5     formule -> pred
+Rule 6     pred -> ID LPAR ID listarg RPAR
+Rule 7     listarg -> SEP ID listarg
+Rule 8     listarg -> empty
+Rule 9     oper -> OR
+Rule 10    oper -> AND
+Rule 11    oper -> IMPL
+Rule 12    var -> QUANT ID
+Rule 13    empty -> <empty>
 
 Terminals, with rules where they appear
 
-AND                  : 12
-ID                   : 7 7 8 14
-IMPL                 : 13
-LPAR                 : 1 7
-NOT                  : 10
-OR                   : 11
-QUANT                : 14
-RPAR                 : 1 7
-SEP                  : 8
+AND                  : 10
+ID                   : 6 6 7 12
+IMPL                 : 11
+LPAR                 : 1 6
+NOT                  : 2
+OR                   : 9
+QUANT                : 12
+RPAR                 : 1 6
+SEP                  : 7
 error                : 
 
 Nonterminals, with rules where they appear
 
-arg                  : 7 8
-empty                : 6 9 15
-formule              : 1 0
-listPred1            : 2 3 5
-listPred2            : 3
-oper                 : 5
-pred                 : 4 10
-var                  : 2 14
+empty                : 8
+formule              : 1 2 3 3 4 0
+listarg              : 6 7
+oper                 : 3
+pred                 : 5
+var                  : 4
 
 Parsing method: LALR
 
@@ -50,364 +45,350 @@ state 0
 
     (0) S' -> . formule
     (1) formule -> . LPAR formule RPAR
-    (2) formule -> . var listPred1
-    (14) var -> . QUANT ID var
-    (15) var -> . empty
-    (16) empty -> .
+    (2) formule -> . NOT formule
+    (3) formule -> . formule oper formule
+    (4) formule -> . var formule
+    (5) formule -> . pred
+    (12) var -> . QUANT ID
+    (6) pred -> . ID LPAR ID listarg RPAR
 
     LPAR            shift and go to state 1
-    QUANT           shift and go to state 2
-    ID              reduce using rule 16 (empty -> .)
-    NOT             reduce using rule 16 (empty -> .)
+    NOT             shift and go to state 5
+    QUANT           shift and go to state 4
+    ID              shift and go to state 6
 
     var                            shift and go to state 3
-    formule                        shift and go to state 4
-    empty                          shift and go to state 5
+    formule                        shift and go to state 7
+    pred                           shift and go to state 2
 
 state 1
 
     (1) formule -> LPAR . formule RPAR
     (1) formule -> . LPAR formule RPAR
-    (2) formule -> . var listPred1
-    (14) var -> . QUANT ID var
-    (15) var -> . empty
-    (16) empty -> .
+    (2) formule -> . NOT formule
+    (3) formule -> . formule oper formule
+    (4) formule -> . var formule
+    (5) formule -> . pred
+    (12) var -> . QUANT ID
+    (6) pred -> . ID LPAR ID listarg RPAR
 
     LPAR            shift and go to state 1
-    QUANT           shift and go to state 2
-    ID              reduce using rule 16 (empty -> .)
-    NOT             reduce using rule 16 (empty -> .)
+    NOT             shift and go to state 5
+    QUANT           shift and go to state 4
+    ID              shift and go to state 6
 
     var                            shift and go to state 3
-    formule                        shift and go to state 6
-    empty                          shift and go to state 5
+    formule                        shift and go to state 8
+    pred                           shift and go to state 2
 
 state 2
 
-    (14) var -> QUANT . ID var
+    (5) formule -> pred .
 
-    ID              shift and go to state 7
+    OR              reduce using rule 5 (formule -> pred .)
+    AND             reduce using rule 5 (formule -> pred .)
+    IMPL            reduce using rule 5 (formule -> pred .)
+    $end            reduce using rule 5 (formule -> pred .)
+    RPAR            reduce using rule 5 (formule -> pred .)
 
 
 state 3
 
-    (2) formule -> var . listPred1
-    (3) listPred1 -> . listPred1 listPred2
-    (4) listPred1 -> . pred
-    (7) pred -> . ID LPAR ID arg RPAR
-    (10) pred -> . NOT pred
+    (4) formule -> var . formule
+    (1) formule -> . LPAR formule RPAR
+    (2) formule -> . NOT formule
+    (3) formule -> . formule oper formule
+    (4) formule -> . var formule
+    (5) formule -> . pred
+    (12) var -> . QUANT ID
+    (6) pred -> . ID LPAR ID listarg RPAR
 
-    ID              shift and go to state 11
-    NOT             shift and go to state 10
+    LPAR            shift and go to state 1
+    NOT             shift and go to state 5
+    QUANT           shift and go to state 4
+    ID              shift and go to state 6
 
-    pred                           shift and go to state 9
-    listPred1                      shift and go to state 8
+    var                            shift and go to state 3
+    formule                        shift and go to state 9
+    pred                           shift and go to state 2
 
 state 4
 
-    (0) S' -> formule .
+    (12) var -> QUANT . ID
 
+    ID              shift and go to state 10
 
 
 state 5
 
-    (15) var -> empty .
+    (2) formule -> NOT . formule
+    (1) formule -> . LPAR formule RPAR
+    (2) formule -> . NOT formule
+    (3) formule -> . formule oper formule
+    (4) formule -> . var formule
+    (5) formule -> . pred
+    (12) var -> . QUANT ID
+    (6) pred -> . ID LPAR ID listarg RPAR
 
-    ID              reduce using rule 15 (var -> empty .)
-    NOT             reduce using rule 15 (var -> empty .)
+    LPAR            shift and go to state 1
+    NOT             shift and go to state 5
+    QUANT           shift and go to state 4
+    ID              shift and go to state 6
 
+    var                            shift and go to state 3
+    formule                        shift and go to state 11
+    pred                           shift and go to state 2
 
 state 6
 
-    (1) formule -> LPAR formule . RPAR
+    (6) pred -> ID . LPAR ID listarg RPAR
 
-    RPAR            shift and go to state 12
+    LPAR            shift and go to state 12
 
 
 state 7
 
-    (14) var -> QUANT ID . var
-    (14) var -> . QUANT ID var
-    (15) var -> . empty
-    (16) empty -> .
+    (0) S' -> formule .
+    (3) formule -> formule . oper formule
+    (9) oper -> . OR
+    (10) oper -> . AND
+    (11) oper -> . IMPL
 
-    QUANT           shift and go to state 2
-    ID              reduce using rule 16 (empty -> .)
-    NOT             reduce using rule 16 (empty -> .)
+    OR              shift and go to state 16
+    AND             shift and go to state 14
+    IMPL            shift and go to state 15
 
-    var                            shift and go to state 13
-    empty                          shift and go to state 5
+    oper                           shift and go to state 13
 
 state 8
 
-    (2) formule -> var listPred1 .
-    (3) listPred1 -> listPred1 . listPred2
-    (5) listPred2 -> . oper listPred1
-    (6) listPred2 -> . empty
-    (11) oper -> . OR
-    (12) oper -> . AND
-    (13) oper -> . IMPL
-    (16) empty -> .
+    (1) formule -> LPAR formule . RPAR
+    (3) formule -> formule . oper formule
+    (9) oper -> . OR
+    (10) oper -> . AND
+    (11) oper -> . IMPL
+
+    RPAR            shift and go to state 17
+    OR              shift and go to state 16
+    AND             shift and go to state 14
+    IMPL            shift and go to state 15
+
+    oper                           shift and go to state 13
+
+state 9
+
+    (4) formule -> var formule .
+    (3) formule -> formule . oper formule
+    (9) oper -> . OR
+    (10) oper -> . AND
+    (11) oper -> . IMPL
 
   ! shift/reduce conflict for OR resolved as shift
   ! shift/reduce conflict for AND resolved as shift
   ! shift/reduce conflict for IMPL resolved as shift
-  ! reduce/reduce conflict for $end resolved using rule 2 (formule -> var listPred1 .)
-  ! reduce/reduce conflict for RPAR resolved using rule 2 (formule -> var listPred1 .)
-    $end            reduce using rule 2 (formule -> var listPred1 .)
-    RPAR            reduce using rule 2 (formule -> var listPred1 .)
-    OR              shift and go to state 18
-    AND             shift and go to state 15
-    IMPL            shift and go to state 17
+    $end            reduce using rule 4 (formule -> var formule .)
+    RPAR            reduce using rule 4 (formule -> var formule .)
+    OR              shift and go to state 16
+    AND             shift and go to state 14
+    IMPL            shift and go to state 15
 
-  ! OR              [ reduce using rule 16 (empty -> .) ]
-  ! AND             [ reduce using rule 16 (empty -> .) ]
-  ! IMPL            [ reduce using rule 16 (empty -> .) ]
-  ! $end            [ reduce using rule 16 (empty -> .) ]
-  ! RPAR            [ reduce using rule 16 (empty -> .) ]
+  ! OR              [ reduce using rule 4 (formule -> var formule .) ]
+  ! AND             [ reduce using rule 4 (formule -> var formule .) ]
+  ! IMPL            [ reduce using rule 4 (formule -> var formule .) ]
 
-    oper                           shift and go to state 14
-    listPred2                      shift and go to state 16
-    empty                          shift and go to state 19
-
-state 9
-
-    (4) listPred1 -> pred .
-
-    OR              reduce using rule 4 (listPred1 -> pred .)
-    AND             reduce using rule 4 (listPred1 -> pred .)
-    IMPL            reduce using rule 4 (listPred1 -> pred .)
-    $end            reduce using rule 4 (listPred1 -> pred .)
-    RPAR            reduce using rule 4 (listPred1 -> pred .)
-
+    oper                           shift and go to state 13
 
 state 10
 
-    (10) pred -> NOT . pred
-    (7) pred -> . ID LPAR ID arg RPAR
-    (10) pred -> . NOT pred
+    (12) var -> QUANT ID .
 
-    ID              shift and go to state 11
-    NOT             shift and go to state 10
+    LPAR            reduce using rule 12 (var -> QUANT ID .)
+    NOT             reduce using rule 12 (var -> QUANT ID .)
+    QUANT           reduce using rule 12 (var -> QUANT ID .)
+    ID              reduce using rule 12 (var -> QUANT ID .)
 
-    pred                           shift and go to state 20
 
 state 11
 
-    (7) pred -> ID . LPAR ID arg RPAR
+    (2) formule -> NOT formule .
+    (3) formule -> formule . oper formule
+    (9) oper -> . OR
+    (10) oper -> . AND
+    (11) oper -> . IMPL
 
-    LPAR            shift and go to state 21
+    OR              reduce using rule 2 (formule -> NOT formule .)
+    AND             reduce using rule 2 (formule -> NOT formule .)
+    IMPL            reduce using rule 2 (formule -> NOT formule .)
+    $end            reduce using rule 2 (formule -> NOT formule .)
+    RPAR            reduce using rule 2 (formule -> NOT formule .)
 
+  ! OR              [ shift and go to state 16 ]
+  ! AND             [ shift and go to state 14 ]
+  ! IMPL            [ shift and go to state 15 ]
+
+    oper                           shift and go to state 13
 
 state 12
 
-    (1) formule -> LPAR formule RPAR .
+    (6) pred -> ID LPAR . ID listarg RPAR
 
-    $end            reduce using rule 1 (formule -> LPAR formule RPAR .)
-    RPAR            reduce using rule 1 (formule -> LPAR formule RPAR .)
+    ID              shift and go to state 18
 
 
 state 13
 
-    (14) var -> QUANT ID var .
+    (3) formule -> formule oper . formule
+    (1) formule -> . LPAR formule RPAR
+    (2) formule -> . NOT formule
+    (3) formule -> . formule oper formule
+    (4) formule -> . var formule
+    (5) formule -> . pred
+    (12) var -> . QUANT ID
+    (6) pred -> . ID LPAR ID listarg RPAR
 
-    ID              reduce using rule 14 (var -> QUANT ID var .)
-    NOT             reduce using rule 14 (var -> QUANT ID var .)
+    LPAR            shift and go to state 1
+    NOT             shift and go to state 5
+    QUANT           shift and go to state 4
+    ID              shift and go to state 6
 
+    var                            shift and go to state 3
+    formule                        shift and go to state 19
+    pred                           shift and go to state 2
 
 state 14
 
-    (5) listPred2 -> oper . listPred1
-    (3) listPred1 -> . listPred1 listPred2
-    (4) listPred1 -> . pred
-    (7) pred -> . ID LPAR ID arg RPAR
-    (10) pred -> . NOT pred
+    (10) oper -> AND .
 
-    ID              shift and go to state 11
-    NOT             shift and go to state 10
+    LPAR            reduce using rule 10 (oper -> AND .)
+    NOT             reduce using rule 10 (oper -> AND .)
+    QUANT           reduce using rule 10 (oper -> AND .)
+    ID              reduce using rule 10 (oper -> AND .)
 
-    pred                           shift and go to state 9
-    listPred1                      shift and go to state 22
 
 state 15
 
-    (12) oper -> AND .
+    (11) oper -> IMPL .
 
-    ID              reduce using rule 12 (oper -> AND .)
-    NOT             reduce using rule 12 (oper -> AND .)
+    LPAR            reduce using rule 11 (oper -> IMPL .)
+    NOT             reduce using rule 11 (oper -> IMPL .)
+    QUANT           reduce using rule 11 (oper -> IMPL .)
+    ID              reduce using rule 11 (oper -> IMPL .)
 
 
 state 16
 
-    (3) listPred1 -> listPred1 listPred2 .
+    (9) oper -> OR .
 
-    OR              reduce using rule 3 (listPred1 -> listPred1 listPred2 .)
-    AND             reduce using rule 3 (listPred1 -> listPred1 listPred2 .)
-    IMPL            reduce using rule 3 (listPred1 -> listPred1 listPred2 .)
-    $end            reduce using rule 3 (listPred1 -> listPred1 listPred2 .)
-    RPAR            reduce using rule 3 (listPred1 -> listPred1 listPred2 .)
+    LPAR            reduce using rule 9 (oper -> OR .)
+    NOT             reduce using rule 9 (oper -> OR .)
+    QUANT           reduce using rule 9 (oper -> OR .)
+    ID              reduce using rule 9 (oper -> OR .)
 
 
 state 17
 
-    (13) oper -> IMPL .
+    (1) formule -> LPAR formule RPAR .
 
-    ID              reduce using rule 13 (oper -> IMPL .)
-    NOT             reduce using rule 13 (oper -> IMPL .)
+    OR              reduce using rule 1 (formule -> LPAR formule RPAR .)
+    AND             reduce using rule 1 (formule -> LPAR formule RPAR .)
+    IMPL            reduce using rule 1 (formule -> LPAR formule RPAR .)
+    $end            reduce using rule 1 (formule -> LPAR formule RPAR .)
+    RPAR            reduce using rule 1 (formule -> LPAR formule RPAR .)
 
 
 state 18
 
-    (11) oper -> OR .
+    (6) pred -> ID LPAR ID . listarg RPAR
+    (7) listarg -> . SEP ID listarg
+    (8) listarg -> . empty
+    (13) empty -> .
 
-    ID              reduce using rule 11 (oper -> OR .)
-    NOT             reduce using rule 11 (oper -> OR .)
+    SEP             shift and go to state 20
+    RPAR            reduce using rule 13 (empty -> .)
 
+    listarg                        shift and go to state 21
+    empty                          shift and go to state 22
 
 state 19
 
-    (6) listPred2 -> empty .
+    (3) formule -> formule oper formule .
+    (3) formule -> formule . oper formule
+    (9) oper -> . OR
+    (10) oper -> . AND
+    (11) oper -> . IMPL
 
-    OR              reduce using rule 6 (listPred2 -> empty .)
-    AND             reduce using rule 6 (listPred2 -> empty .)
-    IMPL            reduce using rule 6 (listPred2 -> empty .)
-    $end            reduce using rule 6 (listPred2 -> empty .)
-    RPAR            reduce using rule 6 (listPred2 -> empty .)
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IMPL resolved as shift
+    $end            reduce using rule 3 (formule -> formule oper formule .)
+    RPAR            reduce using rule 3 (formule -> formule oper formule .)
+    OR              shift and go to state 16
+    AND             shift and go to state 14
+    IMPL            shift and go to state 15
 
+  ! OR              [ reduce using rule 3 (formule -> formule oper formule .) ]
+  ! AND             [ reduce using rule 3 (formule -> formule oper formule .) ]
+  ! IMPL            [ reduce using rule 3 (formule -> formule oper formule .) ]
+
+    oper                           shift and go to state 13
 
 state 20
 
-    (10) pred -> NOT pred .
-
-    OR              reduce using rule 10 (pred -> NOT pred .)
-    AND             reduce using rule 10 (pred -> NOT pred .)
-    IMPL            reduce using rule 10 (pred -> NOT pred .)
-    $end            reduce using rule 10 (pred -> NOT pred .)
-    RPAR            reduce using rule 10 (pred -> NOT pred .)
-
-
-state 21
-
-    (7) pred -> ID LPAR . ID arg RPAR
+    (7) listarg -> SEP . ID listarg
 
     ID              shift and go to state 23
 
 
+state 21
+
+    (6) pred -> ID LPAR ID listarg . RPAR
+
+    RPAR            shift and go to state 24
+
+
 state 22
 
-    (5) listPred2 -> oper listPred1 .
-    (3) listPred1 -> listPred1 . listPred2
-    (5) listPred2 -> . oper listPred1
-    (6) listPred2 -> . empty
-    (11) oper -> . OR
-    (12) oper -> . AND
-    (13) oper -> . IMPL
-    (16) empty -> .
+    (8) listarg -> empty .
 
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for IMPL resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for IMPL resolved as shift
-  ! reduce/reduce conflict for $end resolved using rule 5 (listPred2 -> oper listPred1 .)
-  ! reduce/reduce conflict for RPAR resolved using rule 5 (listPred2 -> oper listPred1 .)
-    $end            reduce using rule 5 (listPred2 -> oper listPred1 .)
-    RPAR            reduce using rule 5 (listPred2 -> oper listPred1 .)
-    OR              shift and go to state 18
-    AND             shift and go to state 15
-    IMPL            shift and go to state 17
+    RPAR            reduce using rule 8 (listarg -> empty .)
 
-  ! OR              [ reduce using rule 5 (listPred2 -> oper listPred1 .) ]
-  ! AND             [ reduce using rule 5 (listPred2 -> oper listPred1 .) ]
-  ! IMPL            [ reduce using rule 5 (listPred2 -> oper listPred1 .) ]
-  ! OR              [ reduce using rule 16 (empty -> .) ]
-  ! AND             [ reduce using rule 16 (empty -> .) ]
-  ! IMPL            [ reduce using rule 16 (empty -> .) ]
-  ! $end            [ reduce using rule 16 (empty -> .) ]
-  ! RPAR            [ reduce using rule 16 (empty -> .) ]
-
-    oper                           shift and go to state 14
-    listPred2                      shift and go to state 16
-    empty                          shift and go to state 19
 
 state 23
 
-    (7) pred -> ID LPAR ID . arg RPAR
-    (8) arg -> . SEP ID arg
-    (9) arg -> . empty
-    (16) empty -> .
+    (7) listarg -> SEP ID . listarg
+    (7) listarg -> . SEP ID listarg
+    (8) listarg -> . empty
+    (13) empty -> .
 
-    SEP             shift and go to state 24
-    RPAR            reduce using rule 16 (empty -> .)
+    SEP             shift and go to state 20
+    RPAR            reduce using rule 13 (empty -> .)
 
-    empty                          shift and go to state 26
-    arg                            shift and go to state 25
+    listarg                        shift and go to state 25
+    empty                          shift and go to state 22
 
 state 24
 
-    (8) arg -> SEP . ID arg
+    (6) pred -> ID LPAR ID listarg RPAR .
 
-    ID              shift and go to state 27
+    OR              reduce using rule 6 (pred -> ID LPAR ID listarg RPAR .)
+    AND             reduce using rule 6 (pred -> ID LPAR ID listarg RPAR .)
+    IMPL            reduce using rule 6 (pred -> ID LPAR ID listarg RPAR .)
+    $end            reduce using rule 6 (pred -> ID LPAR ID listarg RPAR .)
+    RPAR            reduce using rule 6 (pred -> ID LPAR ID listarg RPAR .)
 
 
 state 25
 
-    (7) pred -> ID LPAR ID arg . RPAR
+    (7) listarg -> SEP ID listarg .
 
-    RPAR            shift and go to state 28
-
-
-state 26
-
-    (9) arg -> empty .
-
-    RPAR            reduce using rule 9 (arg -> empty .)
-
-
-state 27
-
-    (8) arg -> SEP ID . arg
-    (8) arg -> . SEP ID arg
-    (9) arg -> . empty
-    (16) empty -> .
-
-    SEP             shift and go to state 24
-    RPAR            reduce using rule 16 (empty -> .)
-
-    empty                          shift and go to state 26
-    arg                            shift and go to state 29
-
-state 28
-
-    (7) pred -> ID LPAR ID arg RPAR .
-
-    OR              reduce using rule 7 (pred -> ID LPAR ID arg RPAR .)
-    AND             reduce using rule 7 (pred -> ID LPAR ID arg RPAR .)
-    IMPL            reduce using rule 7 (pred -> ID LPAR ID arg RPAR .)
-    $end            reduce using rule 7 (pred -> ID LPAR ID arg RPAR .)
-    RPAR            reduce using rule 7 (pred -> ID LPAR ID arg RPAR .)
-
-
-state 29
-
-    (8) arg -> SEP ID arg .
-
-    RPAR            reduce using rule 8 (arg -> SEP ID arg .)
+    RPAR            reduce using rule 7 (listarg -> SEP ID listarg .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for OR in state 8 resolved as shift
-WARNING: shift/reduce conflict for AND in state 8 resolved as shift
-WARNING: shift/reduce conflict for IMPL in state 8 resolved as shift
-WARNING: shift/reduce conflict for OR in state 22 resolved as shift
-WARNING: shift/reduce conflict for AND in state 22 resolved as shift
-WARNING: shift/reduce conflict for IMPL in state 22 resolved as shift
-WARNING: shift/reduce conflict for OR in state 22 resolved as shift
-WARNING: shift/reduce conflict for AND in state 22 resolved as shift
-WARNING: shift/reduce conflict for IMPL in state 22 resolved as shift
-WARNING: reduce/reduce conflict in state 8 resolved using rule (formule -> var listPred1)
-WARNING: rejected rule (empty -> <empty>) in state 8
-WARNING: reduce/reduce conflict in state 22 resolved using rule (listPred2 -> oper listPred1)
-WARNING: rejected rule (empty -> <empty>) in state 22
+WARNING: shift/reduce conflict for OR in state 9 resolved as shift
+WARNING: shift/reduce conflict for AND in state 9 resolved as shift
+WARNING: shift/reduce conflict for IMPL in state 9 resolved as shift
+WARNING: shift/reduce conflict for OR in state 19 resolved as shift
+WARNING: shift/reduce conflict for AND in state 19 resolved as shift
+WARNING: shift/reduce conflict for IMPL in state 19 resolved as shift

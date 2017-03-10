@@ -36,7 +36,7 @@ if __name__ == '__main__':
     print(NC)
     
     #f = raw_input('Formule : ')
-    f = "c(x)"
+    f = "Ve p(x)"
     parser.parse(f)
     exit(0)
     
