@@ -22,7 +22,7 @@ def ligne(l):
 
 def p_formulePAR(f):
 	'''formule : LPAR formule RPAR'''
-	f[0]=f[0];	
+	f[0]=f[2];	
 #end func
 
 def p_formuleNOT(f):
@@ -43,7 +43,7 @@ def p_formuleVAR(f):
 
 def p_formulePred(f):
 	'''formule : pred'''
-	f[0]=Noeud_Unaire(f[2])
+	f[0]=Noeud_Unaire(f[1])
 #end func 
 
 #------------------------------------------------ PREDICAT --------------------------------------------------------
