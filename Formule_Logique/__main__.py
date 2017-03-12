@@ -19,7 +19,7 @@ if __name__ == '__main__':
     Carre = Predicat("Carre",1,carre)
     Carre.add("x")
 
-    print(Carre.execute(["carre"]))
+
     
     Rond = Predicat("Rond",1)
     Rond.add("y")
@@ -33,11 +33,12 @@ if __name__ == '__main__':
     
     N2.greffer(NP2)
     N.greffer(NP1)
-    print(NC)
+    #print(NC)
     
     #f = raw_input('Formule : ')
-    f = "Ve p(x)"
-    parser.parse(f)
+    F2 = "Vy Vx ((carre(x) & rond(y))>relier(x,y)) "
+    f= parser.parse(F2)
+    print(f)
     exit(0)
     
     

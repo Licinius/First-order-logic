@@ -8,10 +8,11 @@ class Predicat(object):
 
         self.function = fun
         
+        self.arite = 0
         arr=0
         if(listPred is not None):
             for i in listPred:
-                self.add(i)
+                self.variables.append(i)
                 arr+=1
             
         if(arite is not None):

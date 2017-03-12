@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'rightIMPLleftORleftANDrightNOTNOT OR AND IMPL ID LPAR RPAR QUANT SEPformule  : LPAR formule RPAR\n\t\t\t\t| var listPred1listPred1 : listPred1 listPred2\n\t\t\t\t | predlistPred2 : oper listPred1\n\t\t\t\t | emptypred : ID LPAR ID arg RPARarg \t: SEP ID arg\n\t\t\t| empty\n\tpred : NOT predoper : ORoper : ANDoper : IMPLvar  : QUANT ID var\n\t\t\t| emptyempty :'
+_lr_signature = 'rightIMPLleftORleftANDrightNOTNOT OR AND IMPL ID LPAR RPAR QUANT SEPformule : LPAR formule RPARformule : NOT formuleformule : formule oper formuleformule : var formuleformule : predpred : ID LPAR ID listarg RPAR listarg : SEP ID listarg\n\t\t\t\t| emptyoper : ORoper : ANDoper : IMPLvar \t: QUANT ID empty :'
     
-_lr_action_items = {'AND':([8,9,16,19,20,22,28,],[15,-4,-3,-6,-10,15,-7,]),'LPAR':([0,1,11,],[1,1,21,]),'SEP':([23,27,],[24,24,]),'OR':([8,9,16,19,20,22,28,],[18,-4,-3,-6,-10,18,-7,]),'RPAR':([6,8,9,12,16,19,20,22,23,25,26,27,28,29,],[12,-2,-4,-1,-3,-6,-10,-5,-16,28,-9,-16,-7,-8,]),'QUANT':([0,1,7,],[2,2,2,]),'NOT':([0,1,3,5,7,10,13,14,15,17,18,],[-16,-16,10,-15,-16,10,-14,10,-12,-13,-11,]),'ID':([0,1,2,3,5,7,10,13,14,15,17,18,21,24,],[-16,-16,7,11,-15,-16,11,-14,11,-12,-13,-11,23,27,]),'IMPL':([8,9,16,19,20,22,28,],[17,-4,-3,-6,-10,17,-7,]),'$end':([4,8,9,12,16,19,20,22,28,],[0,-2,-4,-1,-3,-6,-10,-5,-7,]),}
+_lr_action_items = {'AND':([2,7,8,9,11,17,19,24,],[-5,14,14,14,-2,-1,14,-6,]),'LPAR':([0,1,3,5,6,10,13,14,15,16,],[1,1,1,1,12,-12,1,-10,-11,-9,]),'SEP':([18,23,],[20,20,]),'RPAR':([2,8,9,11,17,18,19,21,22,23,24,25,],[-5,17,-4,-2,-1,-13,-3,24,-8,-13,-6,-7,]),'QUANT':([0,1,3,5,10,13,14,15,16,],[4,4,4,4,-12,4,-10,-11,-9,]),'NOT':([0,1,3,5,10,13,14,15,16,],[5,5,5,5,-12,5,-10,-11,-9,]),'$end':([2,7,9,11,17,19,24,],[-5,0,-4,-2,-1,-3,-6,]),'ID':([0,1,3,4,5,10,12,13,14,15,16,20,],[6,6,6,10,6,-12,18,6,-10,-11,-9,23,]),'IMPL':([2,7,8,9,11,17,19,24,],[-5,15,15,15,-2,-1,15,-6,]),'OR':([2,7,8,9,11,17,19,24,],[-5,16,16,16,-2,-1,16,-6,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'oper':([8,22,],[14,14,]),'listPred2':([8,22,],[16,16,]),'listPred1':([3,14,],[8,22,]),'pred':([3,10,14,],[9,20,9,]),'arg':([23,27,],[25,29,]),'var':([0,1,7,],[3,3,13,]),'formule':([0,1,],[4,6,]),'empty':([0,1,7,8,22,23,27,],[5,5,5,19,19,26,26,]),}
+_lr_goto_items = {'oper':([7,8,9,11,19,],[13,13,13,13,13,]),'pred':([0,1,3,5,13,],[2,2,2,2,2,]),'listarg':([18,23,],[21,25,]),'var':([0,1,3,5,13,],[3,3,3,3,3,]),'formule':([0,1,3,5,13,],[7,8,9,11,19,]),'empty':([18,23,],[22,22,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,20 +26,17 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> formule","S'",1,None,None,None),
-  ('formule -> LPAR formule RPAR','formule',3,'p_formule','yacc_formuleLogique.py',14),
-  ('formule -> var listPred1','formule',2,'p_formule','yacc_formuleLogique.py',15),
-  ('listPred1 -> listPred1 listPred2','listPred1',2,'p_pred1','yacc_formuleLogique.py',21),
-  ('listPred1 -> pred','listPred1',1,'p_pred1','yacc_formuleLogique.py',22),
-  ('listPred2 -> oper listPred1','listPred2',2,'p_pred2','yacc_formuleLogique.py',26),
-  ('listPred2 -> empty','listPred2',1,'p_pred2','yacc_formuleLogique.py',27),
-  ('pred -> ID LPAR ID arg RPAR','pred',5,'p_predNarg','yacc_formuleLogique.py',31),
-  ('arg -> SEP ID arg','arg',3,'p_arg','yacc_formuleLogique.py',36),
-  ('arg -> empty','arg',1,'p_arg','yacc_formuleLogique.py',37),
-  ('pred -> NOT pred','pred',2,'p_NOTpred','yacc_formuleLogique.py',42),
-  ('oper -> OR','oper',1,'p_oper_OR','yacc_formuleLogique.py',49),
-  ('oper -> AND','oper',1,'p_oper_AND','yacc_formuleLogique.py',54),
-  ('oper -> IMPL','oper',1,'p_oper_IMPL','yacc_formuleLogique.py',59),
-  ('var -> QUANT ID var','var',3,'p_var','yacc_formuleLogique.py',66),
-  ('var -> empty','var',1,'p_var','yacc_formuleLogique.py',67),
-  ('empty -> <empty>','empty',0,'p_empty','yacc_formuleLogique.py',72),
+  ('formule -> LPAR formule RPAR','formule',3,'p_formulePAR','yacc_formuleLogique.py',24),
+  ('formule -> NOT formule','formule',2,'p_formuleNOT','yacc_formuleLogique.py',29),
+  ('formule -> formule oper formule','formule',3,'p_formuleOPER','yacc_formuleLogique.py',35),
+  ('formule -> var formule','formule',2,'p_formuleVAR','yacc_formuleLogique.py',40),
+  ('formule -> pred','formule',1,'p_formulePred','yacc_formuleLogique.py',45),
+  ('pred -> ID LPAR ID listarg RPAR','pred',5,'p_predNarg','yacc_formuleLogique.py',53),
+  ('listarg -> SEP ID listarg','listarg',3,'p_listarg','yacc_formuleLogique.py',61),
+  ('listarg -> empty','listarg',1,'p_listarg','yacc_formuleLogique.py',62),
+  ('oper -> OR','oper',1,'p_oper_OR','yacc_formuleLogique.py',71),
+  ('oper -> AND','oper',1,'p_oper_AND','yacc_formuleLogique.py',76),
+  ('oper -> IMPL','oper',1,'p_oper_IMPL','yacc_formuleLogique.py',81),
+  ('var -> QUANT ID','var',2,'p_var','yacc_formuleLogique.py',89),
+  ('empty -> <empty>','empty',0,'p_empty','yacc_formuleLogique.py',95),
 ]

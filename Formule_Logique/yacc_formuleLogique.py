@@ -8,6 +8,7 @@ from Formule_Logique.Predicat import Predicat
 from Formule_Logique.Noeud_Binaire import Noeud_Binaire
 from Formule_Logique.Noeud_Unaire import Noeud_Unaire
 from Formule_Logique.Connecteur_Unaire import Connecteur_Unaire
+
 # ordre et privilege et associabilite a gauche ou droite
 precedence = (
 	('right', 'IMPL'),
@@ -15,20 +16,20 @@ precedence = (
 	('left', 'AND'),
 	('right', 'NOT')
 )
-def ligne(l):
-	'''ligne : formule \n'''
-	print(l[1])
+#def ligne(l):
+#	'''ligne : formule \r | formule \n | formule'''
+#	print(l[1])
+#	l[0]=l[1]
 #end func
 
 def p_formulePAR(f):
 	'''formule : LPAR formule RPAR'''
-	f[0]=f[2];	
+	f[0]=f[2]
 #end func
 
 def p_formuleNOT(f):
 	'''formule : NOT formule'''
 	f[0]=Noeud_Unaire(Connecteur_Unaire.NEG,f[1])
-	
 #end func
 
 def p_formuleOPER(f):
@@ -43,6 +44,7 @@ def p_formuleVAR(f):
 
 def p_formulePred(f):
 	'''formule : pred'''
+	
 	f[0]=Noeud_Unaire(f[1])
 #end func 
 
@@ -51,18 +53,21 @@ def p_formulePred(f):
 
 def p_predNarg(p):
 	'''pred : ID LPAR ID listarg RPAR'''
+	
 	arg = []
 	arg.append(p[3])
 	arg.extend(p[4])
-	p[0]=Predicat(p[1],arg)
+	
+	p[0]=Predicat(p[1],listPred=arg)
 #end func
 
 def p_listarg(arg):
 	''' listarg : SEP ID listarg
 				| empty'''
 	tmp =[]
-	tmp.append(arg[2])
-	tmp.extend(arg[3])
+	if(len(arg) == 4):
+		tmp.extend(arg[2])
+		tmp.extend(arg[3])
 	arg[0] =tmp
 #end func
 	
@@ -90,6 +95,7 @@ def p_oper_IMPL(op):
 
 def p_var(v):
 	'''var 	: QUANT ID '''
+	
 	if(v[1]=='V'):
 		v[0]= Couple(Quantificateur.pour_tout,v[2])
 #end func
