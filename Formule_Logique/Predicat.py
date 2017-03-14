@@ -32,13 +32,26 @@ class Predicat(object):
     
     def execute(self,tab_parametre):
         return self.function(tab_parametre)
+    
+    '''
+        Retourne la fonction associé au predicat
+    '''
+    def getFunction(self):
+        return self.function;
+    
     '''
         Retourne la variable à la n-ième position de la liste.
     '''
-    def get(self,i):
+    def getVariable(self,i):
         if(i<len(self.variables)):
             return self.variables[i]
     #End get
+    
+    '''
+        Retourne l'arite du predicat
+    '''
+    def getArite(self):
+        return self.arite
     
     def __str__(self):
         retour = self.nom+"("

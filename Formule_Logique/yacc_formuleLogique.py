@@ -8,6 +8,7 @@ from Formule_Logique.Predicat import Predicat
 from Formule_Logique.Noeud_Binaire import Noeud_Binaire
 from Formule_Logique.Noeud_Unaire import Noeud_Unaire
 from Formule_Logique.Connecteur_Unaire import Connecteur_Unaire
+from Formule_Logique.ListPredicats import ListPredicats
 
 # ordre et privilege et associabilite a gauche ou droite
 precedence = (
@@ -57,8 +58,9 @@ def p_predNarg(p):
 	arg = []
 	arg.append(p[3])
 	arg.extend(p[4])
-	
-	p[0]=Predicat(p[1],listPred=arg)
+	nameFunction = p[1] + "_" + str(len(arg))
+	function = ListPredicats.dic[nameFunction].getFunction()
+	p[0]=Predicat(p[1],listPred=arg,fun=function)
 #end func
 
 def p_listarg(arg):

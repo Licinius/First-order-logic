@@ -36,7 +36,7 @@ if __name__ == '__main__':
     #print(NC)
     
     #f = raw_input('Formule : ')
-    F2 = "Vy Vx ((carre(x) & rond(y))>relier(x,y)) "
+    F2 = "Vy Vx ((carre(x) & exemple(y))>exemple(x)) "
     f= parser.parse(F2)
     print(f)
     exit(0)
