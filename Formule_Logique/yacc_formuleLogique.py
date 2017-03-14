@@ -100,6 +100,8 @@ def p_var(v):
 	
 	if(v[1]=='V'):
 		v[0]= Couple(Quantificateur.pour_tout,v[2])
+	if(v[1]=='E'):
+		v[0]= Couple(Quantificateur.existe,v[2])
 #end func
 
 def p_empty(e):
