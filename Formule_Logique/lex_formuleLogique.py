@@ -15,7 +15,7 @@ tokens = (
 
 t_AND	= r'&{1,2}' 			# & ou &&
 t_OR	= r'\|{1,2}'			# | ou ||
-t_IMPL	= r'>{1,2}|[-][>]'		# > ou >> ou ->
+t_IMPL	= r'>{1,2}|[-][>]|--'		# > ou >> ou -> ou -- ou -
 t_NOT	= r'[!~]'				# ! ou ~
 t_LPAR	= r'\('					# (
 t_RPAR	= r'\)'					# )
