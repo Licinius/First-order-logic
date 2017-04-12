@@ -33,7 +33,10 @@ class Noeud_Binaire(Noeud):
             
         n.setPere(self)
     #End greffer    
-        
+    def substitution(self,str1,str2):
+        self.gauche.substitution(str1,str2)
+        self.droite.substitution(str1,str2)
+            
     def printFormule(self,p):
         res="\n"
         for i in range(0,p):

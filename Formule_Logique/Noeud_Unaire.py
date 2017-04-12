@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from Formule_Logique.Noeud import Noeud
-
+from Formule_Logique.Predicat import Predicat
 
 
 class Noeud_Unaire(Noeud):
@@ -20,7 +20,14 @@ class Noeud_Unaire(Noeud):
     def getFilsGauche(self):
         return self.gauche;
     #End getFilsGauche
-
+    
+    '''Substitue les x par les y '''
+    def substitution(self,str1,str2):
+        if(isinstance(self.getEtiquette(),Predicat)):
+            self.getEtiquette().substitution(str1,str2)
+        if(self.gauche is not None):
+            self.gauche.substitution(str1,str2)
+          
  
     def printFormule(self,p):
         res="\n"

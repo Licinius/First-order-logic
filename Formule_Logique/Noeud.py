@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 
 
+
 class Noeud(object):
     
     def __init__(self, etiquete,p=None):
@@ -22,7 +23,7 @@ class Noeud(object):
     #End getEtiquette
     
     #Definition de la fonction Greffer dans les fils
-                 
+    
     def __str__(self):
         return self.printFormule(0)
     #End _str__

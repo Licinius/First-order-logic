@@ -53,6 +53,13 @@ class Predicat(object):
     def getArite(self):
         return self.arite
     
+    def substitution(self,str1,str2):
+        index=0;
+        for variable in self.variables:
+            if(variable==str1):
+                self.variables[index] = str2
+            index+=1
+    #end Substitution
     def __str__(self):
         retour = self.nom+"("
         index =0

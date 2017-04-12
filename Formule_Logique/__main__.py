@@ -39,6 +39,8 @@ if __name__ == '__main__':
     F2 = "Vy Vx ((carre(x) & triangle(y))--relier(x,y)) "
     f= parser.parse(F2)
     print(f)
+    f.substitution("y","f(x)")
+    print(f)
     exit(0)
     
     
