@@ -7,8 +7,7 @@ from Formule_Logique.Noeud import Noeud
 class Noeud_Unaire(Noeud):
 
     def __init__(self,etiquette,p=None,g=None):
-        Noeud.__init__(self, p)
-        self.etiquette = etiquette
+        Noeud.__init__(self,etiquette, p)
         self.gauche = g
         
     #End __init_ Noeud_Connecteur
@@ -21,10 +20,7 @@ class Noeud_Unaire(Noeud):
     def getFilsGauche(self):
         return self.gauche;
     #End getFilsGauche
-    '''get le contenu du node'''
-    def getEtiquette(self):
-        return self.etiquette
-    #End getEtiquette
+
  
     def printFormule(self,p):
         res="\n"
@@ -32,7 +28,7 @@ class Noeud_Unaire(Noeud):
             res+="  "
         res +="┖"
         res+='--'
-        res+=self.etiquette.__str__()
+        res+=super(Noeud_Unaire, self).getEtiquette().__str__()
         #res+=self.couple.__str__()
         if(self.gauche is None):
             return res 

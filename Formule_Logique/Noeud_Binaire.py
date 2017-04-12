@@ -5,18 +5,12 @@ from Formule_Logique.Noeud import Noeud
 class Noeud_Binaire(Noeud):
 
     def __init__(self,etiquette,p=None,g=None,d=None):
-        Noeud.__init__(self, p)
-        self.Connecteur = etiquette
+        Noeud.__init__(self, etiquette, p)
         self.gauche = g
         self.droite =  d
         
     #End __init_ Noeud_Connecteur
-    
-    '''get le contenu du node'''
-    def getEtiquette(self):
-        return self.Connecteur
-    #End getEtiquette
-    
+        
     def getFilsGauche(self):
         return self.gauche;
     #End getFilsGauche
@@ -46,7 +40,7 @@ class Noeud_Binaire(Noeud):
             res+="  "
         res +="┖"
         res+='--'
-        res+=self.Connecteur.value
+        res+=super(Noeud_Binaire, self).getEtiquette().value
         if(self.gauche is None and self.droite is None):
             return res 
         elif(self.gauche is not None and self.droite is None):
