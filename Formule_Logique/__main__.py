@@ -26,7 +26,8 @@ if __name__ == '__main__':
     
     NP1 = Noeud_Unaire(Carre)
     NP2 = Noeud_Unaire(Rond)
-    
+    print(NP1)
+   
     NC = Noeud_Binaire(Connecteur.ET)
     NC.greffer(N)
     NC.greffer(N2)

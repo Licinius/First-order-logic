@@ -2,13 +2,18 @@
 
 from Formule_Logique.Noeud import Noeud
 from Formule_Logique.Predicat import Predicat
+from Formule_Logique.Connecteur import Connecteur
+from Formule_Logique.Noeud_Exception import Noeud_Unaire_Etiquette
 
 
 class Noeud_Unaire(Noeud):
 
     def __init__(self,etiquette,p=None,g=None):
-        Noeud.__init__(self,etiquette, p)
-        self.gauche = g
+        if(not isinstance(etiquette, Connecteur)):
+            Noeud.__init__(self,etiquette, p)
+            self.gauche = g
+        else:
+            raise Noeud_Unaire_Etiquette("L'étiquette d'un noeud unaire ne doit pas être un Connecteur Binaire")
         
     #End __init_ Noeud_Connecteur
 

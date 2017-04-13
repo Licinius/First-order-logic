@@ -1,13 +1,18 @@
 #-*- coding: utf-8 -*-
 from Formule_Logique.Noeud import Noeud
-
+from Formule_Logique.Connecteur import Connecteur
+from Formule_Logique.Noeud_Exception import Noeud_Binaire_Etiquette
 
 class Noeud_Binaire(Noeud):
 
     def __init__(self,etiquette,p=None,g=None,d=None):
-        Noeud.__init__(self, etiquette, p)
-        self.gauche = g
-        self.droite =  d
+        if(isinstance(etiquette, Connecteur)):
+            Noeud.__init__(self, etiquette, p)
+            self.gauche = g
+            self.droite =  d
+        else :
+             raise Noeud_Binaire_Etiquette("L'étiquette d'un noeud binaire doit être un connecteur binaire")
+            
         
     #End __init_ Noeud_Connecteur
         
