@@ -71,3 +71,13 @@ class Predicat(object):
                 retour += "," + str(variable)
         return retour+")"
     #End __str__
+    
+    def __cmp__(self,other):
+        if(self.nom == other.nom):
+            if(self.arite<other.arite):
+                return -1
+            elif(self.arite > other.arite):
+                return 1
+            else: return 0
+        else:
+            return False
