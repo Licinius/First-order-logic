@@ -13,6 +13,7 @@ if __name__ == '__main__':
     c2 = Couple(Quantificateur.existe,"y")
     N2=Noeud_Unaire(etiquette=c2)
     
+    
     # Function definition is here
     carre = lambda args: args[0] =="carre";
     
@@ -24,7 +25,7 @@ if __name__ == '__main__':
     Rond.add("y")
     NP1 = Noeud_Unaire(Carre)
     NP2 = Noeud_Unaire(Rond)
-    print(NP1)
+
    
     NC = Noeud_Binaire(Connecteur.ET)
     NC.greffer(N)
@@ -35,13 +36,15 @@ if __name__ == '__main__':
     #print(NC)
     
     #f = raw_input('Formule : ')
-    F2 = "Vy Vx ((carre(x) & triangle(y))--relier(x,y)) "
-    f= parser.parse(F2)
-    print(f)
-    fn = f.negation()
-    print(fn)
+    f = "carre(x) & triangle(y)"
+    f= parser.parse(f)
     print(f)
     
+    F3 = "(! carre(x)) | (! triangle(y)) "
+    F3= parser.parse(F3)
+    print(F3)
+    
+    print(F3==f)
     exit(0)
     
     
