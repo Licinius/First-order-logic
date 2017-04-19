@@ -30,7 +30,8 @@ def p_formulePAR(f):
 
 def p_formuleNOT(f):
 	'''formule : NOT formule'''
-	f[0]=Noeud_Unaire(Connecteur_Unaire.NEG,f[1])
+	f[0]=Noeud_Unaire(Connecteur_Unaire.NEG,g=f[2])
+
 #end func
 
 def p_formuleOPER(f):

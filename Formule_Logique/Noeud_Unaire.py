@@ -49,7 +49,11 @@ class Noeud_Unaire(Noeud):
             res = Noeud_Unaire(Connecteur_Unaire.NEG)
             res.gauche = copy.deepcopy(self)
         return res
-    #End negation      
+    #End negation
+    
+    def __eq__(self,other):
+        return ((self.etiquette,self.gauche) == (other.etiquette,other.gauche))
+    #End eq      
  
     def printFormule(self,p):
         res="\n"

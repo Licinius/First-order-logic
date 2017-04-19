@@ -21,6 +21,12 @@ class Couple(object):
             return str(self.getQuantificateur().value)+ self.getVariable()
         #End __str__
         
+        def __eq__(self,other):
+            if (isinstance(other, Couple)):
+                return ((self.quantificateur,self.variable) == (other.quantificateur,other.variable))
+            return False
+        
+            
         def negation(self):
             if(self.quantificateur == Quantificateur.pour_tout):
                 res = Couple(Quantificateur.existe,self.variable)
