@@ -76,3 +76,4 @@ class Predicat(object):
         if (isinstance(other, Predicat)):
             return((self.nom,self.arite)==(other.nom,other.arite))
         return False
+    

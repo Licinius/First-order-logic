@@ -4,6 +4,9 @@ from Formule_Logique.Noeud import Noeud
 from Formule_Logique.Predicat import Predicat
 from Formule_Logique.Connecteur import Connecteur
 from Formule_Logique.Noeud_Exception import Noeud_Unaire_Etiquette
+from Formule_Logique.Couple import Couple
+from Formule_Logique.Connecteur_Unaire import Connecteur_Unaire
+import copy
 
 
 class Noeud_Unaire(Noeud):
@@ -32,7 +35,21 @@ class Noeud_Unaire(Noeud):
             self.getEtiquette().substitution(str1,str2)
         if(self.gauche is not None):
             self.gauche.substitution(str1,str2)
-          
+    
+    def negation(self):
+        if(self.etiquette==Connecteur_Unaire.NEG):
+            if(self.gauche is not None):
+                res = copy.deepcopy(self.gauche)
+        
+        elif(isinstance(self.etiquette,Couple)): 
+            res=Noeud_Unaire((self.etiquette.negation()))
+            if(self.gauche is not None):
+                res.gauche = self.gauche.negation()
+        else:
+            res = Noeud_Unaire(Connecteur_Unaire.NEG)
+            res.gauche = copy.deepcopy(self)
+        return res
+    #End negation      
  
     def printFormule(self,p):
         res="\n"

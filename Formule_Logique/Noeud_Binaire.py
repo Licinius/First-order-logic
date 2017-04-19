@@ -2,6 +2,8 @@
 from Formule_Logique.Noeud import Noeud
 from Formule_Logique.Connecteur import Connecteur
 from Formule_Logique.Noeud_Exception import Noeud_Binaire_Etiquette
+from Formule_Logique.Noeud_Unaire import Noeud_Unaire
+import copy
 
 class Noeud_Binaire(Noeud):
 
@@ -41,7 +43,23 @@ class Noeud_Binaire(Noeud):
     def substitution(self,str1,str2):
         self.gauche.substitution(str1,str2)
         self.droite.substitution(str1,str2)
+    #End substitution
+    
+    def negation(self):
+        if(self.etiquette==Connecteur.ET):
+            res = Noeud_Binaire(Connecteur.OU)
+            res.gauche = self.gauche.negation()
             
+        elif(self.etiquette == Connecteur.OU) :
+            res = Noeud_Binaire(Connecteur.ET)
+            res.gauche = self.gauche.negation()
+
+        elif(self.etiquette == Connecteur.IMP):
+            res = Noeud_Binaire(Connecteur.ET)
+            res.gauche = copy.deepcopy(self.gauche)
+            
+        res.droite = self.droite.negation()
+        return res       
     def printFormule(self,p):
         res="\n"
         for i in range(0,p):

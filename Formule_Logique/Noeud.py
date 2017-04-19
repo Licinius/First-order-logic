@@ -24,6 +24,7 @@ class Noeud(object):
     
     #Definition de la fonction Greffer dans les fils
     
+    
     def __str__(self):
         return self.printFormule(0)
     #End _str__

@@ -18,12 +18,10 @@ if __name__ == '__main__':
     
     Carre = Predicat("Carre",1,carre)
     Carre.add("x")
-
-
+    CarreS = Predicat("Carre",2,carre)
     
     Rond = Predicat("Rond",1)
     Rond.add("y")
-    
     NP1 = Noeud_Unaire(Carre)
     NP2 = Noeud_Unaire(Rond)
     print(NP1)
@@ -40,8 +38,10 @@ if __name__ == '__main__':
     F2 = "Vy Vx ((carre(x) & triangle(y))--relier(x,y)) "
     f= parser.parse(F2)
     print(f)
-    f.substitution("y","f(x)")
+    fn = f.negation()
+    print(fn)
     print(f)
+    
     exit(0)
     
     
