@@ -54,7 +54,7 @@ class Noeud_Unaire(Noeud):
     def __eq__(self,other):
         return ((self.etiquette,self.gauche) == (other.etiquette,other.gauche))
     #End eq      
- 
+       
     def printFormule(self,p):
         res="\n"
         for i in range(0,p):

@@ -62,26 +62,12 @@ class Noeud_Binaire(Noeud):
         return res      
     
     def __eq__(self,other):
-        #IMP avec ET
-        if(self.etiquette == Connecteur.IMP and other.etiquette==Connecteur.OU):
-            return ((self.gauche.negation(),self.droite) == (other.gauche,other.droite))
-        elif(self.etiquette == Connecteur.OU and other.etiquette==Connecteur.IMP):
-            return ((self.gauche,self.droite) == (other.gauche.negation(),other.droite))
-
-        #ET avec IMP
-        elif(self.etiquette == Connecteur.IMP and other.etiquette==Connecteur.ET):
-            return ((self.gauche,self.droite.negation()) == (other.gauche,other.droite))
-        elif(self.etiquette == Connecteur.ET and other.etiquette==Connecteur.IMP):
-            return ((self.gauche,self.droite) == (other.gauche,other.droite.negation()))
-        
-        #ET avec OU 
-        elif((self.etiquette == Connecteur.ET and other.etiquette==Connecteur.OU) or (self.etiquette == Connecteur.OU and other.etiquette==Connecteur.ET)):
-            return ((self.gauche.negation(),self.droite.negation()) == (other.gauche,other.droite))
-          
         #Etiquette identique
         return ((self.etiquette,self.gauche,self.droite) == (other.etiquette,other.gauche,other.droite))
-    #End eq 
-        
+    
+    #End égale
+    
+   
     def printFormule(self,p):
         res="\n"
         for i in range(0,p):

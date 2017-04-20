@@ -74,6 +74,16 @@ class Predicat(object):
     
     def __eq__(self,other):
         if (isinstance(other, Predicat)):
-            return((self.nom,self.arite)==(other.nom,other.arite))
+            for i in range (0,self.arite):
+                if (self.variables[i] != other.variables[i]):
+                    return False
+            return self.cmpSimple(other)
         return False
     
+    def cmpSimple(self,other):
+        if (isinstance(other, Predicat)):
+            return((self.nom,self.arite,self.function)==(other.nom,other.arite,other.function))
+        return False
+    
+    def cmpComplete(self,other):
+        return self == other

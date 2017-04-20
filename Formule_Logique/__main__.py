@@ -14,13 +14,15 @@ if __name__ == '__main__':
     N2=Noeud_Unaire(etiquette=c2)
     
     
+    
     # Function definition is here
     carre = lambda args: args[0] =="carre";
-    
+    rond = lambda args : args[0] == "carre";
     Carre = Predicat("Carre",1,carre)
     Carre.add("x")
-    CarreS = Predicat("Carre",2,carre)
-    
+    CarreS = Predicat("Carre",1,carre)
+    CarreS.add("x")
+    print (Carre==CarreS)
     Rond = Predicat("Rond",1)
     Rond.add("y")
     NP1 = Noeud_Unaire(Carre)
@@ -28,6 +30,7 @@ if __name__ == '__main__':
 
    
     NC = Noeud_Binaire(Connecteur.ET)
+
     NC.greffer(N)
     NC.greffer(N2)
     
@@ -44,7 +47,7 @@ if __name__ == '__main__':
     F3= parser.parse(F3)
     print(F3)
     
-    print(F3==f)
+
     exit(0)
     
     
