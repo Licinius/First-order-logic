@@ -12,11 +12,17 @@ class Noeud_Binaire(Noeud):
             Noeud.__init__(self, etiquette, p)
             self.gauche = g
             self.droite =  d
+             
+            if g is not None:
+                self.gauche.setPere(self)
+            if d is not None:
+                self.droite.setPere(self)
+           
         else :
-             raise Noeud_Binaire_Etiquette("L'étiquette d'un noeud binaire doit être un connecteur binaire")
+            raise Noeud_Binaire_Etiquette("L'étiquette d'un noeud binaire doit être un connecteur binaire")
             
         
-    #End __init_ Noeud_Connecteur
+    #End __init_ Noeud_Binaire
         
     def getFilsGauche(self):
         return self.gauche;
@@ -40,9 +46,12 @@ class Noeud_Binaire(Noeud):
             
         n.setPere(self)
     #End greffer    
+    
     def substitution(self,str1,str2):
-        self.gauche.substitution(str1,str2)
-        self.droite.substitution(str1,str2)
+        if(self.gauche is not None):
+            self.gauche.substitution(str1,str2)
+        if(self.droite is not None):
+            self.droite.substitution(str1,str2)
     #End substitution
     
     def negation(self):
@@ -62,9 +71,7 @@ class Noeud_Binaire(Noeud):
         return res      
     
     def __eq__(self,other):
-        #Etiquette identique
         return ((self.etiquette,self.gauche,self.droite) == (other.etiquette,other.gauche,other.droite))
-    
     #End égale
     
    

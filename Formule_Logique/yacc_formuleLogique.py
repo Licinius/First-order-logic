@@ -9,6 +9,7 @@ from Formule_Logique.Noeud_Binaire import Noeud_Binaire
 from Formule_Logique.Noeud_Unaire import Noeud_Unaire
 from Formule_Logique.Connecteur_Unaire import Connecteur_Unaire
 from Formule_Logique.ListPredicats import ListPredicats
+from Formule_Logique.Feuille import Feuille
 
 # ordre et privilege et associabilite a gauche ou droite
 precedence = (
@@ -47,7 +48,7 @@ def p_formuleVAR(f):
 def p_formulePred(f):
 	'''formule : pred'''
 	
-	f[0]=Noeud_Unaire(f[1])
+	f[0]=Feuille(f[1])
 #end func 
 
 #------------------------------------------------ PREDICAT --------------------------------------------------------

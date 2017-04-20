@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//Formule_Logique/Connecteur.py=utf-8
 encoding//Formule_Logique/Connecteur_Unaire.py=utf-8
 encoding//Formule_Logique/Couple.py=utf-8
+encoding//Formule_Logique/Feuille.py=utf-8
 encoding//Formule_Logique/Noeud.py=utf-8
 encoding//Formule_Logique/Noeud_Binaire.py=utf-8
 encoding//Formule_Logique/Noeud_Unaire.py=utf-8

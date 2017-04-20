@@ -12,11 +12,11 @@ import copy
 class Noeud_Unaire(Noeud):
 
     def __init__(self,etiquette,p=None,g=None):
-        if(not isinstance(etiquette, Connecteur)):
-            Noeud.__init__(self,etiquette, p)
+        if(not isinstance(etiquette, Connecteur) and (not isinstance(etiquette,Predicat))):
+            Noeud.__init__(self,etiquette, p)            
             self.gauche = g
         else:
-            raise Noeud_Unaire_Etiquette("L'étiquette d'un noeud unaire ne doit pas être un Connecteur Binaire")
+            raise Noeud_Unaire_Etiquette("L'étiquette d'un noeud unaire ne doit pas être un Connecteur Binaire ni un Predicat")
         
     #End __init_ Noeud_Connecteur
 
@@ -31,8 +31,6 @@ class Noeud_Unaire(Noeud):
     
     '''Substitue les x par les y '''
     def substitution(self,str1,str2):
-        if(isinstance(self.getEtiquette(),Predicat)):
-            self.getEtiquette().substitution(str1,str2)
         if(self.gauche is not None):
             self.gauche.substitution(str1,str2)
     
@@ -40,21 +38,17 @@ class Noeud_Unaire(Noeud):
         if(self.etiquette==Connecteur_Unaire.NEG):
             if(self.gauche is not None):
                 res = copy.deepcopy(self.gauche)
-        
-        elif(isinstance(self.etiquette,Couple)): 
+        else: #c'est un couple
             res=Noeud_Unaire((self.etiquette.negation()))
             if(self.gauche is not None):
                 res.gauche = self.gauche.negation()
-        else:
-            res = Noeud_Unaire(Connecteur_Unaire.NEG)
-            res.gauche = copy.deepcopy(self)
         return res
     #End negation
     
     def __eq__(self,other):
         return ((self.etiquette,self.gauche) == (other.etiquette,other.gauche))
     #End eq      
-       
+    
     def printFormule(self,p):
         res="\n"
         for i in range(0,p):

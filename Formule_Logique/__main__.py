@@ -4,9 +4,13 @@ from Formule_Logique.Couple import Couple
 from Formule_Logique.Quantificateur import Quantificateur
 from Formule_Logique.Connecteur import Connecteur
 from Formule_Logique.Predicat import Predicat
+
+
 from Formule_Logique.Noeud_Binaire import Noeud_Binaire
 from Formule_Logique.Noeud_Unaire import Noeud_Unaire
 from  Formule_Logique.yacc_formuleLogique import parser
+from Formule_Logique.Feuille import Feuille
+
 if __name__ == '__main__':
     c = Couple(Quantificateur.pour_tout,"x")
     N = Noeud_Unaire(etiquette=c)
@@ -25,8 +29,8 @@ if __name__ == '__main__':
     print (Carre==CarreS)
     Rond = Predicat("Rond",1)
     Rond.add("y")
-    NP1 = Noeud_Unaire(Carre)
-    NP2 = Noeud_Unaire(Rond)
+    NP1 = Feuille(Carre)
+    NP2 = Feuille(Rond)
 
    
     NC = Noeud_Binaire(Connecteur.ET)
@@ -42,11 +46,9 @@ if __name__ == '__main__':
     f = "carre(x) & triangle(y)"
     f= parser.parse(f)
     print(f)
-    
-    F3 = "(! carre(x)) | (! triangle(y)) "
-    F3= parser.parse(F3)
-    print(F3)
-    
+    print(f.negation())
+    f.substitution("x","f(x)")
+    print(f)
 
     exit(0)
     
