@@ -44,14 +44,14 @@ class ListPredicats(object):
     '''
     dic = {
      "triangle_1" : Predicat("triangle",arite=1,fun=triangleFunc),
-     "carre_1" : Predicat("square",arite=1,fun=squareFunc),
-     "rond_1" : Predicat("circle",arite=1,fun=circleFunc),
+     "carre_1" : Predicat("carre",arite=1,fun=squareFunc),
+     "rond_1" : Predicat("rond",arite=1,fun=circleFunc),
     "circle_1" : Predicat("circle",arite=1,fun=circleFunc),
      "square_1" : Predicat("square",arite=1,fun=squareFunc),
      "cross_1" : Predicat("cross",arite=1,fun=crossFunc),
      "diamond_1" : Predicat("diamond",arite=1,fun=diamondFunc),
      "star_1" : Predicat("star",arite=1,fun=starFunc),
-     "etoile_1":Predicat("star",arite=1,fun=starFunc),
+     "etoile_1":Predicat("etoile",arite=1,fun=starFunc),
      "relier_2" :  Predicat("relier",arite=2,fun=(lambda args : args[0].hasEdge(args[1],args[2],False))),
     
      "exemple_1" : Predicat("exemple",arite=1,fun =(lambda args : True))
