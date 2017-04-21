@@ -8,3 +8,7 @@ class Noeud_Binaire_Etiquette(Exception):
 class Feuille_Etiquette(Exception):
     def __init__(self,*args,**kwargs):
         Exception.__init__(self,*args,**kwargs)
+
+class filsAbsentRemonter(Exception):
+    def __init__(self,*args,**kwargs):
+        Exception.__init__(self,*args,**kwargs)

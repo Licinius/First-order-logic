@@ -10,14 +10,25 @@ from Formule_Logique.Noeud_Binaire import Noeud_Binaire
 from Formule_Logique.Noeud_Unaire import Noeud_Unaire
 from  Formule_Logique.yacc_formuleLogique import parser
 from Formule_Logique.Feuille import Feuille
+from Formule_Logique.Connecteur_Unaire import Connecteur_Unaire
 
 if __name__ == '__main__':
     c = Couple(Quantificateur.pour_tout,"x")
     N = Noeud_Unaire(etiquette=c)
     c2 = Couple(Quantificateur.existe,"y")
     N2=Noeud_Unaire(etiquette=c2)
-    
-    
+    Neg = Noeud_Unaire(etiquette=Connecteur_Unaire.NEG)
+    carre = lambda args: args[0] =="carre";
+    Carre = Predicat("Carre",1,carre)
+    Carre.add("x")
+    NP1 = Feuille(Carre)
+    N2.greffer(Neg)
+    Neg.greffer(N)
+    N.greffer(NP1)
+    #print(N2)
+   # N.remonter()
+    #print(N2)
+    '''
     
     # Function definition is here
     carre = lambda args: args[0] =="carre";
@@ -26,7 +37,7 @@ if __name__ == '__main__':
     Carre.add("x")
     CarreS = Predicat("Carre",1,carre)
     CarreS.add("x")
-    print (Carre==CarreS)
+    
     Rond = Predicat("Rond",1)
     Rond.add("y")
     NP1 = Feuille(Carre)
@@ -39,17 +50,19 @@ if __name__ == '__main__':
     NC.greffer(N2)
     
     N2.greffer(NP2)
+
     N.greffer(NP1)
-    #print(NC)
-    
+    print(NC)
+    '''
     #f = raw_input('Formule : ')
-    f = "carre(x) & triangle(y)"
+    f = " (Vx carre(x)) > (Vy triangle(y))"
     f= parser.parse(f)
     print(f)
-    print(f.negation())
-    f.substitution("x","f(x)")
-    print(f)
-
+    fres = f.getFilsGauche().remonter()
+    print(f.__repr__())
+    print(fres.__repr__())
+    print(f.racine())
+    
     exit(0)
     
     

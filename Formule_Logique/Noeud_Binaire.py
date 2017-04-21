@@ -43,9 +43,21 @@ class Noeud_Binaire(Noeud):
             self.droite = n
         else :
             self.gauche = n
-            
-        n.setPere(self)
+        if(n is not None):
+            n.setPere(self)
     #End greffer    
+    
+    def grefferFilsGauche(self,n):
+        self.gauche = n
+        if(n is not None):
+            n.setPere(self)
+    #End grefferG
+    
+    def grefferFilsDroit(self,n):
+        self.droite = n
+        if(n is not None):
+            n.setPere(self)
+    
     
     def substitution(self,str1,str2):
         if(self.gauche is not None):
@@ -74,6 +86,10 @@ class Noeud_Binaire(Noeud):
         return ((self.etiquette,self.gauche,self.droite) == (other.etiquette,other.gauche,other.droite))
     #End égale
     
+    def vider(self):
+        self.gauche = None
+        self.droite = None
+    #end vider
    
     def printFormule(self,p):
         res="\n"
@@ -81,7 +97,7 @@ class Noeud_Binaire(Noeud):
             res+="  "
         res +="┖"
         res+='--'
-        res+=super(Noeud_Binaire, self).getEtiquette().value
+        res+=self.getEtiquette().value
         if(self.gauche is None and self.droite is None):
             return res 
         elif(self.gauche is not None and self.droite is None):

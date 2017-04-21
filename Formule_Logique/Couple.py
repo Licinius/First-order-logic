@@ -29,7 +29,9 @@ class Couple(object):
             
         def negation(self):
             if(self.quantificateur == Quantificateur.pour_tout):
-                res = Couple(Quantificateur.existe,self.variable)
+                self.quantificateur = Quantificateur.existe
             else:
-                res = Couple(Quantificateur.pour_tout,self.variable)
-            return res
+                self.quantificateur = Quantificateur.pour_tout
+            
+        
+        
