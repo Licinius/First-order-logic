@@ -23,6 +23,15 @@ L'installation des modules peut se faire à l'aide de pip :
 $ pip install ply
 $ pip install enum34
 ```
+### Syntaxe des formules
+* Un prédicat et une variable sont toujours en minuscule et peuvent contenir des caractères  alphanumériques
+* Un &and; se traduit par & ou &&
+* Un &or; se traduit par | ou ||
+* Un &rarr; se traduit par -- , -> , >, >>
+* La négation &not;  se traduit par ! ou ~
+* Pour les quantificateurs : 
+    * &exist; se traduit par E
+    * &forall; se traduit par V
 
 ### Ajouter des predicats reconnaissable
 
@@ -50,7 +59,7 @@ Dans le module ici, les prédicats sont utilisés pour Tulip, ils ont toujours l
     } 
 ```
 
-Les formes disponible dans Tulip se trouve ici :
+Les formes disponibles dans Tulip se trouvent ici :
 http://tulip.labri.fr/Documentation/current/tulip-python/html/graphvisualattributes.html#shapes-of-graph-elements
 
             
