@@ -23,3 +23,34 @@ L'installation des modules peut se faire à l'aide de pip :
 $ pip install ply
 $ pip install enum34
 ```
+
+### Ajouter des predicats reconnaissable
+
+La démarche d'ajout de prédicat est simple, il suffit de saisir votre fonction python, ensuite de l'ajouter au tableau associatif tel que la clef sera le nom du prédicat suivi d'un sous-tiret et l'arité du prédicat
+
+Exemple : Je veux rajouter le prédicat estChien(x)
+1. J'écris la fonction chien qui vérifie si l'argument passé en paramètre est un chien
+2. J'ajoute dans tableau associatif une nouvelle ligne telle que :
+	dic = {...,"chien_1":Predicat("chien",arite=1,fun=chien)}
+
+Vous n'avez plus qu'à reinstaller le module.
+
+Dans le module ici, les prédicats sont utilisés pour Tulip, ils ont toujours la même forme de fonction, exemple :
+```python
+ def maFormeIcon(args):
+    if(args[1] is not None):
+        return args[1].getIntegerProperty("viewShape")[args[2] == args[0].NodeShape.maFormeIcon
+    else :
+        return args[0].NodeShape.maFormeIcon
+    ...
+    dic = {
+    "triangle_1" : Predicat("triangle",arite=1,fun=triangleFunc),
+    ..., 
+    "maForme_1" : Predicat("maForme",arite=1,fun = maFormeIcon)
+    } 
+```
+
+Les formes disponible dans Tulip se trouve ici :
+http://tulip.labri.fr/Documentation/current/tulip-python/html/graphvisualattributes.html#shapes-of-graph-elements
+
+            
