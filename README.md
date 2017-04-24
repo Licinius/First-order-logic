@@ -33,7 +33,7 @@ $ pip install enum34
     * &exist; se traduit par E
     * &forall; se traduit par V
 
-### Ajouter des predicats reconnaissable
+### Ajouter des predicats reconnaissables
 
 La démarche d'ajout de prédicat est simple, il suffit de saisir votre fonction python, ensuite de l'ajouter au tableau associatif tel que la clef sera le nom du prédicat suivi d'un sous-tiret et l'arité du prédicat
 
