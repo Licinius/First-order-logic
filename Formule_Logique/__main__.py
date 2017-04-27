@@ -63,6 +63,8 @@ if __name__ == '__main__':
     print(fres.__repr__())
     print(f.racine())
     
+    g= parser.parse("carre(x)")
+    print(g.negation())
     exit(0)
     
     

@@ -6,6 +6,7 @@ import copy
 from Formule_Logique.Noeud import Noeud
 from Formule_Logique.Predicat import Predicat
 from Formule_Logique.Noeud_Exception import Feuille_Etiquette
+from Formule_Logique.Noeud_Unaire import Noeud_Unaire
 
 class Feuille(Noeud):
 
@@ -23,7 +24,6 @@ class Feuille(Noeud):
     
     '''Retourne la négation de la formule'''
     def negation(self):
-        from Formule_Logique.Noeud_Unaire import Noeud_Unaire
         res = Noeud_Unaire(Connecteur_Unaire.NEG)
         res.greffer(copy.deepcopy(self))
         return res
